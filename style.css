@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background-color: #f7f7f7;
+    color: #333;
+  }
+  
+  header {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  section {
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .balance p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .transactions li {
+    list-style: none;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .transactions li:last-child {
+    border-bottom: none;
+  }
+  
+  .transaction-date {
+    flex-basis: 30%;
+  }
+  
+  .transaction-amount {
+    flex-basis: 20%;
+    text-align: right;
+  }
+  
+  .add-transaction form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="date"],
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  footer {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  footer p {
+    color: #fff;
+  }
+  
