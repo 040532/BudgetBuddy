@@ -1,7 +1,23 @@
+function setCurrentBalance(balance) {
+    localStorage.setItem('currentBalance', balance.toString());
+}
+
+//Get current balance of user
+function getCurrentBalance() {
+    let currentBalance = localStorage.getItem('currentBalance');
+    if (currentBalance) {
+      return parseFloat(currentBalance);
+    } else {
+      const initialBalance = parseFloat(prompt('Enter your initial balance:'));
+      localStorage.setItem('currentBalance', initialBalance.toString());
+      return initialBalance;
+    }
+  }
+
 // Calculate and update the balance based on the transaction amounts
 function updateBalance() {
     const transactionAmounts = document.querySelectorAll('.transaction-amount');
-    let balance = 0;
+    let balance = getCurrentBalance();;
   
     transactionAmounts.forEach(amount => {
       const value = parseFloat(amount.textContent.replace(/\$/g, ''));
@@ -12,6 +28,7 @@ function updateBalance() {
   
     const balanceElement = document.getElementById('balance');
     balanceElement.textContent = formatAmount(balance);
+    setCurrentBalance(balance);
   }
   
   // Format the amount to display with currency symbol and commas
@@ -248,5 +265,4 @@ function updateBalance() {
   createChart();
   
   // Display transactions on page load
-  displayTransactions();
-  
+  displayTransactions();  
