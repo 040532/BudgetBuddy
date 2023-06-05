@@ -1,24 +1,21 @@
-function setCurrentBalance(balance) {
-    localStorage.setItem('currentBalance', balance.toString());
-}
-
-//Get current balance of user
 function getCurrentBalance() {
-    let currentBalance = localStorage.getItem('currentBalance');
-    if (currentBalance) {
-      return parseFloat(currentBalance);
-    } else {
-      const initialBalance = parseFloat(prompt('Enter your initial balance:'));
-      localStorage.setItem('currentBalance', initialBalance.toString());
-      return initialBalance;
-    }
-  }
-
+        let currentBalance = localStorage.getItem('currentBalance');
+        const balanceElement = document.getElementById('balance');
+        if (currentBalance!=0) {
+          balanceElement.textContent = formatAmount(currentBalance);
+          return parseFloat(currentBalance);
+        } else {
+          const initialBalance = prompt('Enter your initial balance:');
+          balanceElement.textContent = formatAmount(initialBalance);
+          localStorage.setItem('currentBalance', initialBalance);
+          return parseFloat(initialBalance);
+        }
+}
 // Calculate and update the balance based on the transaction amounts
 function updateBalance() {
     const transactionAmounts = document.querySelectorAll('.transaction-amount');
-    let balance = getCurrentBalance();;
-  
+    let balance = 0;
+
     transactionAmounts.forEach(amount => {
       const value = parseFloat(amount.textContent.replace(/\$/g, ''));
       if (!isNaN(value)) {
@@ -26,9 +23,9 @@ function updateBalance() {
       }
     });
   
+    localStorage.setItem('currentBalance', balance.toString());
     const balanceElement = document.getElementById('balance');
     balanceElement.textContent = formatAmount(balance);
-    setCurrentBalance(balance);
   }
   
   // Format the amount to display with currency symbol and commas
@@ -263,6 +260,8 @@ function updateBalance() {
   
   // Call the createChart function to generate the chart
   createChart();
+
+  getCurrentBalance();
   
   // Display transactions on page load
   displayTransactions();  
